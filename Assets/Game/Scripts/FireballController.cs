@@ -13,6 +13,14 @@ public class FireballController : MonoBehaviour
         {
             damageable.Damage(_damage);
             Destroy(gameObject);
+            return;
+        }
+        
+        var block = other.GetComponent<Block>();
+        if (block != null)
+        {
+            Destroy(gameObject);
+            return;
         }
     }
 }

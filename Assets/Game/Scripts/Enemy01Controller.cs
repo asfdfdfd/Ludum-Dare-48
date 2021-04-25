@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy01Controller : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Enemy01Controller : MonoBehaviour
     private GameObject _gameObjectPlayerBody;
     private Collider2D _playerBodyCollider;
     private PlayerMoveController _playerMoveController;
+    private NavMeshAgent _navMeshAgent;
     
     [SerializeField] private Collider2D _attackTrigger;
 
@@ -41,6 +43,10 @@ public class Enemy01Controller : MonoBehaviour
         _playerBodyCollider = _gameObjectPlayerBody.GetComponent<Collider2D>();
         
         _rigidbody2D = GetComponent<Rigidbody2D>();
+
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis = false;
     }
 
     private void FixedUpdate()
@@ -49,13 +55,15 @@ public class Enemy01Controller : MonoBehaviour
         {
             var direction = (_gameObjectPlayer.transform.position - transform.position).normalized;
             
-            _rigidbody2D.velocity = direction * _speed * Time.deltaTime;
+            //_rigidbody2D.velocity = direction * _speed * Time.deltaTime;
+
+            _navMeshAgent.destination = _gameObjectPlayer.transform.position;
         }
         else if (!_isAttackStarted && _shouldAttack)
         {
             _isAttackStarted = true;
      
-            _rigidbody2D.velocity = Vector2.zero;
+            // _rigidbody2D.velocity = Vector2.zero;
             
             StartCoroutine(Attack());
         }

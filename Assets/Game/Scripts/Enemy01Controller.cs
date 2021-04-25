@@ -10,7 +10,6 @@ public class Enemy01Controller : MonoBehaviour
     [SerializeField] private float _secondsPauseBeforeAttack;
     [SerializeField] private float _secondsPauseAfterAttack;
     [SerializeField] private float _secondsPlayerStun;
-    [SerializeField] private float _speed;
     [SerializeField] private float _pushForce;
     [SerializeField] private float _maxHealth;
     
@@ -53,17 +52,13 @@ public class Enemy01Controller : MonoBehaviour
     {
         if (!_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
         {
-            var direction = (_gameObjectPlayer.transform.position - transform.position).normalized;
-            
-            //_rigidbody2D.velocity = direction * _speed * Time.deltaTime;
-
             _navMeshAgent.destination = _gameObjectPlayer.transform.position;
         }
         else if (!_isAttackStarted && _shouldAttack)
         {
             _isAttackStarted = true;
-     
-            // _rigidbody2D.velocity = Vector2.zero;
+
+            _navMeshAgent.destination = gameObject.transform.position;
             
             StartCoroutine(Attack());
         }

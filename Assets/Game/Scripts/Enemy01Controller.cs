@@ -45,7 +45,7 @@ public class Enemy01Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isAttackStarted && !_shouldAttack)
+        if (!_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
         {
             var direction = (_gameObjectPlayer.transform.position - transform.position).normalized;
             

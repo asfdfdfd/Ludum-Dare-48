@@ -1246,7 +1246,7 @@ PrefabInstance:
     - target: {fileID: 5902399256569637161, guid: 077a6dfc7109c44d5a00841d12c2d0b3, type: 3}
       propertyPath: _prefabEnemy
       value: 
-      objectReference: {fileID: 4828810509085437184, guid: dd4a5362cd80d4384a7949d8df1ff1c8, type: 3}
+      objectReference: {fileID: 4828810509085437184, guid: e1c62eb40b1fc4f22b0275cff753a6af, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 077a6dfc7109c44d5a00841d12c2d0b3, type: 3}
 --- !u!4 &1946602864535555558 stripped
@@ -1264,6 +1264,10 @@ PrefabInstance:
     - target: {fileID: 6675120170706234133, guid: b197c94fecc254c2a97a5b9b61d95900, type: 3}
       propertyPath: m_Name
       value: Spawn Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675120170706234154, guid: b197c94fecc254c2a97a5b9b61d95900, type: 3}
+      propertyPath: _spawnWaves.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6675120170706234154, guid: b197c94fecc254c2a97a5b9b61d95900, type: 3}
       propertyPath: _spawnWaves.Array.data[0]

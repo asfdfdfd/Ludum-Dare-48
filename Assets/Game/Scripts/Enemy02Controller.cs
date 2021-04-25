@@ -12,6 +12,8 @@ public class Enemy02Controller : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _pushForce;
     [SerializeField] private float _maxHealth;
+    [SerializeField] private bool _shouldAlwaysAttack;
+    [SerializeField] private bool _shouldMove;
     
     [SerializeField] private GameObject _prefabFireball;
     
@@ -47,13 +49,13 @@ public class Enemy02Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
+        if (_shouldMove && !_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
         {
             var direction = (_gameObjectPlayer.transform.position - transform.position).normalized;
             
             _rigidbody2D.velocity = direction * _speed * Time.deltaTime;
         }
-        else if (!_isAttackStarted && _shouldAttack)
+        else if (!_isAttackStarted && (_shouldAttack || _shouldAlwaysAttack))
         {
             _isAttackStarted = true;
      
@@ -67,7 +69,7 @@ public class Enemy02Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(_secondsPauseBeforeAttack);
 
-        if (_shouldAttack)
+        if (_shouldAttack || _shouldAlwaysAttack)
         {
             var gameObjectFireball = Instantiate(_prefabFireball);
             

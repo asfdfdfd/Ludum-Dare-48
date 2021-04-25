@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 828475706739867349}
   - component: {fileID: 4166947541429098825}
   m_Layer: 0
-  m_Name: Enemy02
+  m_Name: Enemy02 - Static
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
   _speed: 50
   _pushForce: 3
   _maxHealth: 1
-  _shouldAlwaysAttack: 0
-  _shouldMove: 1
+  _shouldAlwaysAttack: 1
+  _shouldMove: 0
   _prefabFireball: {fileID: 8722407416172828946, guid: 04f9104728f224712b5ba92cb07494a9, type: 3}
   _attackTrigger: {fileID: 1013548527951217508}
 --- !u!50 &4166947541429098825

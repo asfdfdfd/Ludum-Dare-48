@@ -5,5 +5,7 @@ using UnityEngine;
 
 public class SpawnWave : MonoBehaviour
 {
+    public float delay;
+    
     public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
 }

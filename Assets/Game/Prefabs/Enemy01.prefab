@@ -172,7 +172,7 @@ MonoBehaviour:
   _secondsPauseBeforeAttack: 1
   _secondsPauseAfterAttack: 1
   _secondsPlayerStun: 0.5
-  _speed: 50
+  _speed: 25
   _pushForce: 3
   _maxHealth: 1
   _attackTrigger: {fileID: 1013548527951217508}

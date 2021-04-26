@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,9 +23,11 @@ public class Enemy02Controller : MonoBehaviour
 
     private bool _isAttackStarted;
 
-    private bool _shouldAttack;
+    private bool _isPlayerInTheAttackRange;
 
     private float _health;
+
+    private bool _isPlayerInTheDirectLineOfSight;
     
     private void Awake()
     {
@@ -44,13 +47,57 @@ public class Enemy02Controller : MonoBehaviour
         _navMeshAgent.updateUpAxis = false;
     }
 
+    private void Update()
+    {
+        _isPlayerInTheDirectLineOfSight = isPlayerInTheDirectLineOfSIghtVisible();
+    }
+
+    private bool isPlayerInTheDirectLineOfSIghtVisible()
+    {
+        if (_playerRigidbody != null)
+        {
+            var playerDirection = (_playerRigidbody.transform.position - transform.position).normalized;
+            var raycasts = Physics2D.RaycastAll(transform.position, playerDirection);
+
+            foreach (var raycast in raycasts)
+            {
+                if (raycast.transform.GetComponent<Block>() != null)
+                {
+                    return false;
+                } 
+                
+                if (raycast.transform.GetComponent<PlayerDamageController>() != null)
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+
     private void FixedUpdate()
     {
-        if (_shouldMove && !_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
+        if (_shouldMove)
         {
-            _navMeshAgent.destination = _gameObjectPlayer.transform.position;
+            if (!_isAttackStarted && (!_isPlayerInTheDirectLineOfSight || !_isPlayerInTheAttackRange) && _gameObjectPlayer != null)
+            {
+                _navMeshAgent.destination = _gameObjectPlayer.transform.position;
+            }
+            else
+            {
+                attackIfRequired();
+            }  
         }
-        else if (!_isAttackStarted && (_shouldAttack || _shouldAlwaysAttack))
+        else
+        {
+            attackIfRequired();
+        }
+    }
+
+    private void attackIfRequired()
+    {
+        if (!_isAttackStarted && (_isPlayerInTheAttackRange || _shouldAlwaysAttack) && _isPlayerInTheDirectLineOfSight)
         {
             _isAttackStarted = true;
      
@@ -64,7 +111,7 @@ public class Enemy02Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(_secondsPauseBeforeAttack);
 
-        if (_shouldAttack || _shouldAlwaysAttack)
+        if (_isPlayerInTheDirectLineOfSight && (_isPlayerInTheAttackRange || _shouldAlwaysAttack))
         {
             var gameObjectFireball = Instantiate(_prefabFireball);
             
@@ -85,7 +132,7 @@ public class Enemy02Controller : MonoBehaviour
     {
         if (_playerBodyCollider == other)
         {
-            _shouldAttack = true;
+            _isPlayerInTheAttackRange = true;
         }
     }
 
@@ -93,7 +140,7 @@ public class Enemy02Controller : MonoBehaviour
     {
         if (_playerBodyCollider == other)
         {
-            _shouldAttack = false;
+            _isPlayerInTheAttackRange = false;
         }
     }
 

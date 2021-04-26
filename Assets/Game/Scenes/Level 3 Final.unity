@@ -366,7 +366,7 @@ SpriteRenderer:
   m_SortingLayerID: 2074438555
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 408a704bedc2f4f63985d6ee87733e01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e16b0c9cf8514d3caae75b2935b185e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -408,7 +408,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 22.88, y: 10.803203}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 22.88, y: 10.803203}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7c1e45f4ddf1746d590731b5882bb9a7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 60391e979791c4ac094446efae9d6725, type: 2}
 --- !u!4 &794994380
 Transform:
   m_ObjectHideFlags: 0

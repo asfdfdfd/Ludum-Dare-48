@@ -9,13 +9,20 @@ public class SpawnManager : MonoBehaviour
 
     private List<GameObject> _spawnedEnemies = new List<GameObject>();
 
+    private GameObject _spawnStorage;
+    
     private int _wave = -1;
 
     private bool _isSpawnInProgress;
-    
+
+    private void Awake()
+    {
+        _spawnStorage = GameObject.FindWithTag("Enemies Spawn Storage");
+    }
+
     private void Update()
     {
-        if (transform.childCount == 0 && !_isSpawnInProgress)
+        if (_spawnStorage.transform.childCount == 0 && !_isSpawnInProgress)
         {
             StartCoroutine(SpawnNextWave());
         }
@@ -35,7 +42,7 @@ public class SpawnManager : MonoBehaviour
             
             foreach (var spawnPoint in spawnWave.spawnPoints)
             {
-                _spawnedEnemies.Add(spawnPoint.Spawn(transform));
+                _spawnedEnemies.Add(spawnPoint.Spawn(_spawnStorage.transform));
             }
         }
 

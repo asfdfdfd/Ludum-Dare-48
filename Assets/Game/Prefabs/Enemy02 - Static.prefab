@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb2902f4988f4663a0eae35ae720df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _secondsPauseBeforeAttack: 1
-  _secondsPauseAfterAttack: 1
+  _secondsPauseBeforeAttack: 0.5
+  _secondsPauseAfterAttack: 0.5
   _maxHealth: 1
   _shouldAlwaysAttack: 1
   _shouldMove: 0

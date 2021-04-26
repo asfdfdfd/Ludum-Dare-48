@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9404fc0b7d64d30aca9ddb7944aa50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 100
+  _playerSpeed: 120
   _stopLinearDrag: 1000
   _playerRigidbody: {fileID: 7860529009265232505}
 --- !u!114 &7860529009265232506
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bd57be5fff84ca589c6396a167cf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 6
 --- !u!58 &7552933255734819603
 CircleCollider2D:
   m_ObjectHideFlags: 0

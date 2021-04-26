@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabFireball: {fileID: 8722407416172828946, guid: f58f1bb3ee6054a22bc4713d7c5a97c1, type: 3}
-  _shootCooldown: 1
+  _shootCooldown: 0.5
 --- !u!50 &7860529009265232505
 Rigidbody2D:
   serializedVersion: 4
@@ -232,4 +232,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bd57be5fff84ca589c6396a167cf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 3
+  _maxHealth: 4

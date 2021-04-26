@@ -13,6 +13,7 @@ public class PlayerDamageController : MonoBehaviour
         {
             GameState.CurrentHealthInitialized = true;
             GameState.CurrentHealth = _maxHealth;
+            GameState.HealthOnLevelStart = _maxHealth;
         }
 
         if (GameState.CurrentLevelName == null)

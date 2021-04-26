@@ -100,9 +100,12 @@ public class Enemy02Controller : MonoBehaviour
         if (!_isAttackStarted && (_isPlayerInTheAttackRange || _shouldAlwaysAttack) && _isPlayerInTheDirectLineOfSight)
         {
             _isAttackStarted = true;
-     
-            _navMeshAgent.destination = gameObject.transform.position;
-            
+
+            if (_shouldMove)
+            {
+                _navMeshAgent.destination = gameObject.transform.position;
+            }
+
             StartCoroutine(Attack());
         }
     }

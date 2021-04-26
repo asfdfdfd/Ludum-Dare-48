@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6942388851795607430}
   - component: {fileID: 4904277003064081003}
   - component: {fileID: 7293003602686075789}
+  - component: {fileID: 2165243596316590453}
   m_Layer: 0
   m_Name: R_Stone_M
   m_TagString: Untagged
@@ -173,3 +174,15 @@ PolygonCollider2D:
       - {x: -0.095, y: 0.07}
       - {x: 0.145, y: 0.08}
       - {x: 0.645, y: 0.12}
+--- !u!114 &2165243596316590453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870601057761120333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665da7304c89740e58a9db9490eefbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5365554198229867773}
   - component: {fileID: 1963879451052662966}
   - component: {fileID: 8229613022431792742}
+  - component: {fileID: -313092744829977786}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -148,3 +149,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6549776, y: 1.3312914}
   m_EdgeRadius: 0
+--- !u!114 &-313092744829977786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844780469172731653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665da7304c89740e58a9db9490eefbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

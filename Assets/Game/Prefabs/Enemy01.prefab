@@ -174,7 +174,7 @@ MonoBehaviour:
   _secondsPauseAfterAttack: 1
   _secondsPlayerStun: 0.5
   _pushForce: 3
-  _maxHealth: 1
+  _maxHealth: 2
   _attackTrigger: {fileID: 1013548527951217508}
 --- !u!50 &4166947541429098825
 Rigidbody2D:
@@ -207,7 +207,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

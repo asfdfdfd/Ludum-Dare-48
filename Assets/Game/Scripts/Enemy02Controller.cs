@@ -21,6 +21,8 @@ public class Enemy02Controller : MonoBehaviour
     
     [SerializeField] private Collider2D _attackTrigger;
 
+    [SerializeField] private Animator _animator;
+    
     private bool _isAttackStarted;
 
     private bool _isPlayerInTheAttackRange;
@@ -28,6 +30,9 @@ public class Enemy02Controller : MonoBehaviour
     private float _health;
 
     private bool _isPlayerInTheDirectLineOfSight;
+    
+    private int _animationHashIsWalking;
+    private int _animationHashAttack;
     
     private void Awake()
     {
@@ -45,6 +50,9 @@ public class Enemy02Controller : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
+        
+        _animationHashIsWalking = Animator.StringToHash("IsWalking");
+        _animationHashAttack = Animator.StringToHash("Attack");
     }
 
     private void Update()
@@ -83,6 +91,8 @@ public class Enemy02Controller : MonoBehaviour
             if (!_isAttackStarted && (!_isPlayerInTheDirectLineOfSight || !_isPlayerInTheAttackRange) && _gameObjectPlayer != null)
             {
                 _navMeshAgent.destination = _gameObjectPlayer.transform.position;
+                
+                _animator.SetBool(_animationHashIsWalking, true);
             }
             else
             {
@@ -103,6 +113,8 @@ public class Enemy02Controller : MonoBehaviour
 
             if (_shouldMove)
             {
+                _animator.SetBool(_animationHashIsWalking, false);
+                
                 _navMeshAgent.destination = gameObject.transform.position;
             }
 
@@ -123,6 +135,8 @@ public class Enemy02Controller : MonoBehaviour
             var fireballStartLocation = transform.position;
             var fireballTargetLocation = _playerRigidbody.transform.position;
 
+            _animator.SetTrigger(_animationHashAttack);
+            
             projectileController.LaunchTowards(fireballStartLocation, fireballTargetLocation);
         }
 

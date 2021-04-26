@@ -82,11 +82,12 @@ public class Enemy01Controller : MonoBehaviour
             _playerRigidbody.drag = 10.0f;
             _playerRigidbody.AddForce(force * _pushForce, ForceMode2D.Impulse);
 
-            _playerDamageController.Damage(_damage);
-            
-            yield return new WaitForSeconds(_secondsPlayerStun);
-            
-            _playerMoveController.EnableMovement();
+            if (_playerDamageController.Damage(_damage))
+            {
+                yield return new WaitForSeconds(_secondsPlayerStun);
+
+                _playerMoveController.EnableMovement();
+            }
         }
 
         yield return new WaitForSeconds(_secondsPauseAfterAttack);

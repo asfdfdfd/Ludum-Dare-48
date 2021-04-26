@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 938086214}
   m_Layer: 0
   m_Name: Enemies
-  m_TagString: Untagged
+  m_TagString: Enemies Spawn Storage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1598,7 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675120170706234133, guid: b197c94fecc254c2a97a5b9b61d95900, type: 3}
       propertyPath: m_TagString
-      value: Enemies Spawn Storage
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6675120170706234154, guid: b197c94fecc254c2a97a5b9b61d95900, type: 3}
       propertyPath: _spawnWaves.Array.size

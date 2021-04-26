@@ -152,6 +152,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 7860529008717546806}
+  - {fileID: 1277294027385081046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,6 +187,7 @@ MonoBehaviour:
   _prefabFireball: {fileID: 8722407416172828946, guid: f58f1bb3ee6054a22bc4713d7c5a97c1, type: 3}
   _shootCooldown: 0.5
   _animator: {fileID: 294380796799753286}
+  _fireballSpawnPoint: {fileID: 8506698576691156019}
 --- !u!50 &7860529009265232505
 Rigidbody2D:
   serializedVersion: 4
@@ -236,3 +238,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.45227078}
   serializedVersion: 2
   m_Radius: 0.51675045
+--- !u!1 &8506698576691156019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277294027385081046}
+  m_Layer: 0
+  m_Name: Fireball Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1277294027385081046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506698576691156019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.86, y: 2.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7860529009265232508}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

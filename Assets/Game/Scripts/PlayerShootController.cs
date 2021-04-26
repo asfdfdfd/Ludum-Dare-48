@@ -6,6 +6,7 @@ public class PlayerShootController : MonoBehaviour
     [SerializeField] private GameObject _prefabFireball;
     [SerializeField] private float _shootCooldown;
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _fireballSpawnPoint;
     
     private bool _isFirePressed = false;
 
@@ -30,7 +31,7 @@ public class PlayerShootController : MonoBehaviour
 
                 var projectileController = gameObjectFireball.GetComponent<ProjectileController>();
 
-                var fireballStartLocation = transform.position;
+                var fireballStartLocation = _fireballSpawnPoint.transform.position;
                 var fireballTargetLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 _animator.SetTrigger(_animationHashAttack);

@@ -12,12 +12,14 @@ public class Enemy01Controller : MonoBehaviour
     [SerializeField] private float _secondsPlayerStun;
     [SerializeField] private float _pushForce;
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _damage;
     
     private GameObject _gameObjectPlayer;
     private Rigidbody2D _playerRigidbody;
     private GameObject _gameObjectPlayerBody;
     private Collider2D _playerBodyCollider;
     private PlayerMoveController _playerMoveController;
+    private PlayerDamageController _playerDamageController;
     private NavMeshAgent _navMeshAgent;
     
     [SerializeField] private Collider2D _attackTrigger;
@@ -37,6 +39,7 @@ public class Enemy01Controller : MonoBehaviour
         _gameObjectPlayer = GameObject.Find("Player");
         _playerRigidbody = _gameObjectPlayer.GetComponent<Rigidbody2D>();
         _playerMoveController = _gameObjectPlayer.GetComponent<PlayerMoveController>();
+        _playerDamageController = _gameObjectPlayer.GetComponent<PlayerDamageController>();
         
         _gameObjectPlayerBody = GameObject.Find("Player Body");
         _playerBodyCollider = _gameObjectPlayerBody.GetComponent<Collider2D>();
@@ -79,6 +82,8 @@ public class Enemy01Controller : MonoBehaviour
             _playerRigidbody.drag = 10.0f;
             _playerRigidbody.AddForce(force * _pushForce, ForceMode2D.Impulse);
 
+            _playerDamageController.Damage(_damage);
+            
             yield return new WaitForSeconds(_secondsPlayerStun);
             
             _playerMoveController.EnableMovement();

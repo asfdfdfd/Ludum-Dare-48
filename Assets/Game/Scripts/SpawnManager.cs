@@ -50,6 +50,12 @@ public class SpawnManager : MonoBehaviour
         }
         else if (_nextScene != null)
         {
+            var gameObjectMusicPlayer = GameObject.Find("MusicPlayer");
+            if (gameObjectMusicPlayer != null)
+            {
+                var musicPlayer = gameObjectMusicPlayer.GetComponent<MusicPlayer>();
+                musicPlayer.ReduceSound();
+            }
             GameState.PreviousLevelName = GameState.CurrentLevelName;
             GameState.CurrentLevelName = _nextScene;
             GameState.HealthOnLevelStart = GameState.CurrentHealth;

@@ -21,6 +21,13 @@ public class TeleportToTheLevel : MonoBehaviour
         {
             GameState.HealthOnLevelStart = GameState.CurrentHealth;
             
+            var gameObjectMusicPlayer = GameObject.Find("MusicPlayer");
+            if (gameObjectMusicPlayer != null)
+            {
+                var musicPlayer = gameObjectMusicPlayer.GetComponent<MusicPlayer>();
+                musicPlayer.RestoreSound();
+            }
+            
             if (GameState.OnigiryEaten)
             {
                 GameState.OnigiryEaten = false;

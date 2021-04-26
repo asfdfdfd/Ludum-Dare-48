@@ -1,14 +1,23 @@
+using System;
 using UnityEngine;
 
 public class PlayerShootController : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabFireball;
     [SerializeField] private float _shootCooldown;
+    [SerializeField] private Animator _animator;
     
     private bool _isFirePressed = false;
 
     private float _shootTimer;
-    
+
+    private int _animationHashAttack;
+
+    private void Awake()
+    {
+        _animationHashAttack = Animator.StringToHash("Attack");
+    }
+
     private void Update()
     {
         if (_shootTimer == 0.0f)
@@ -24,6 +33,8 @@ public class PlayerShootController : MonoBehaviour
                 var fireballStartLocation = transform.position;
                 var fireballTargetLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+                _animator.SetTrigger(_animationHashAttack);
+                
                 projectileController.LaunchTowards(fireballStartLocation, fireballTargetLocation);
 
                 _shootTimer = _shootCooldown;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMoveController : MonoBehaviour
@@ -5,9 +6,17 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private float _playerSpeed;
     [SerializeField] private float _stopLinearDrag;
     [SerializeField] private Rigidbody2D _playerRigidbody;
-
+    [SerializeField] private Animator _animator;
+    
     private bool _isMovementEnabled = true;
     
+    private int _animationHashIsWalking;
+
+    private void Awake()
+    {
+        _animationHashIsWalking = Animator.StringToHash("IsWalking");
+    }
+
     private void FixedUpdate()
     {
         if (!_isMovementEnabled)
@@ -22,10 +31,14 @@ public class PlayerMoveController : MonoBehaviour
         if (movementVector.Equals(Vector2.zero))
         {
             _playerRigidbody.drag = _stopLinearDrag;
+            
+            _animator.SetBool(_animationHashIsWalking, false);
         }
         else
         {
             _playerRigidbody.drag = 0.0f;
+            
+            _animator.SetBool(_animationHashIsWalking, true);
         }
 
         _playerRigidbody.velocity = movementVector * (_playerSpeed * Time.deltaTime);

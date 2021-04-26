@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SpawnManager : MonoBehaviour
 
     private bool _isSpawnInProgress;
 
+    [SerializeField] private string _nextScene;
+    
     private void Awake()
     {
         _spawnStorage = GameObject.FindWithTag("Enemies Spawn Storage");
@@ -44,6 +47,10 @@ public class SpawnManager : MonoBehaviour
             {
                 _spawnedEnemies.Add(spawnPoint.Spawn(_spawnStorage.transform));
             }
+        }
+        else if (_nextScene != null)
+        {
+            SceneManager.LoadScene(_nextScene);
         }
 
         _isSpawnInProgress = false;

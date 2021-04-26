@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,8 +21,6 @@ public class Enemy01Controller : MonoBehaviour
     
     [SerializeField] private Collider2D _attackTrigger;
 
-    private Rigidbody2D _rigidbody2D;
-
     private bool _isAttackStarted;
 
     private bool _shouldAttack;
@@ -44,7 +39,7 @@ public class Enemy01Controller : MonoBehaviour
         _gameObjectPlayerBody = GameObject.Find("Player Body");
         _playerBodyCollider = _gameObjectPlayerBody.GetComponent<Collider2D>();
         
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        GetComponent<Rigidbody2D>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;

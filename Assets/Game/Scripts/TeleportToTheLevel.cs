@@ -19,7 +19,21 @@ public class TeleportToTheLevel : MonoBehaviour
     {
         if (_playerCollider == other)
         {
-            SceneManager.LoadScene(_levelName);
+            GameState.HealthOnLevelStart = GameState.CurrentHealth;
+            
+            if (GameState.OnigiryEaten)
+            {
+                GameState.OnigiryEaten = false;
+                GameState.CurrentLevelName = _levelName;
+                GameState.PreviousLevelName = null;
+                SceneManager.LoadScene(_levelName);
+            }
+            else
+            {
+                GameState.CurrentLevelName = GameState.PreviousLevelName;
+                GameState.PreviousLevelName = null;
+                SceneManager.LoadScene(GameState.CurrentLevelName);
+            }
         }
     }
 }

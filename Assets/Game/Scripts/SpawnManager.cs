@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     private int _wave = -1;
 
     private bool _isSpawnInProgress;
-
+    
     [SerializeField] private string _nextScene;
     
     private void Awake()
@@ -50,6 +50,9 @@ public class SpawnManager : MonoBehaviour
         }
         else if (_nextScene != null)
         {
+            GameState.PreviousLevelName = GameState.CurrentLevelName;
+            GameState.CurrentLevelName = _nextScene;
+            GameState.HealthOnLevelStart = GameState.CurrentHealth;
             SceneManager.LoadScene(_nextScene);
         }
 

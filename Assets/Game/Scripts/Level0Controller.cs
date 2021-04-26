@@ -11,6 +11,8 @@ public class Level0Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            GameState.CurrentLevelName = "Level 1 Final";
+            GameState.PreviousLevelName = null;
             SceneManager.LoadScene("Level 1 Final");
         }
     }

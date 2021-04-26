@@ -1,23 +1,36 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamageController : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
-
-    private float _health;
+    
+    public float MaxHealth => _maxHealth;
 
     private void Awake()
     {
-        _health = _maxHealth;
+        if (!GameState.CurrentHealthInitialized)
+        {
+            GameState.CurrentHealthInitialized = true;
+            GameState.CurrentHealth = _maxHealth;
+        }
+
+        if (GameState.CurrentLevelName == null)
+        {
+            GameState.CurrentLevelName = SceneManager.GetActiveScene().name;
+        }
     }
 
     public bool Damage(float damage)
     {
-        _health -= damage;
+        GameState.CurrentHealth -= damage;
 
-        if (_health <= 0.0f)
+        if (GameState.CurrentHealth <= 0.0f)
         {
-            Destroy(gameObject);
+            GameState.CurrentHealth = GameState.HealthOnLevelStart;
+            
+            SceneManager.LoadScene(GameState.CurrentLevelName);
+            
             return false;
         }
 

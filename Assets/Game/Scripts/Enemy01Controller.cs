@@ -21,11 +21,16 @@ public class Enemy01Controller : MonoBehaviour
     
     [SerializeField] private Collider2D _attackTrigger;
 
+    [SerializeField] private Animator _animator;
+    
     private bool _isAttackStarted;
 
     private bool _shouldAttack;
 
     private float _health;
+    
+    private int _animationHashIsWalking;
+    private int _animationHashAttack;
     
     private void Awake()
     {
@@ -44,6 +49,9 @@ public class Enemy01Controller : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
+        
+        _animationHashIsWalking = Animator.StringToHash("IsWalking");
+        _animationHashAttack = Animator.StringToHash("Attack");
     }
 
     private void FixedUpdate()
@@ -51,12 +59,16 @@ public class Enemy01Controller : MonoBehaviour
         if (!_isAttackStarted && !_shouldAttack && _gameObjectPlayer != null)
         {
             _navMeshAgent.destination = _gameObjectPlayer.transform.position;
+            
+            _animator.SetBool(_animationHashIsWalking, true);
         }
         else if (!_isAttackStarted && _shouldAttack)
         {
             _isAttackStarted = true;
 
             _navMeshAgent.destination = gameObject.transform.position;
+            
+            _animator.SetBool(_animationHashIsWalking, false);
             
             StartCoroutine(Attack());
         }
@@ -73,16 +85,24 @@ public class Enemy01Controller : MonoBehaviour
             var collisionPoint = _attackTrigger.ClosestPoint(_gameObjectPlayerBody.transform.position);
 
             var force = (collisionPoint - (Vector2)transform.position).normalized;
-
+            
+            _animator.SetTrigger(_animationHashAttack);
+            
+            yield return new WaitForSeconds(0.4f);
+            
             _playerRigidbody.drag = 10.0f;
             _playerRigidbody.AddForce(force * _pushForce, ForceMode2D.Impulse);
-
+            
             if (_playerDamageController.Damage(_damage))
             {
                 yield return new WaitForSeconds(_secondsPlayerStun);
 
                 _playerMoveController.EnableMovement();
             }
+        }
+        else
+        {
+            _animator.SetTrigger(_animationHashAttack);
         }
 
         yield return new WaitForSeconds(_secondsPauseAfterAttack);

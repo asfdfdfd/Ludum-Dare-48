@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerDamageController : MonoBehaviour
@@ -15,13 +11,16 @@ public class PlayerDamageController : MonoBehaviour
         _health = _maxHealth;
     }
 
-    public void Damage(float damage)
+    public bool Damage(float damage)
     {
         _health -= damage;
 
         if (_health <= 0.0f)
         {
             Destroy(gameObject);
+            return false;
         }
+
+        return true;
     }
 }

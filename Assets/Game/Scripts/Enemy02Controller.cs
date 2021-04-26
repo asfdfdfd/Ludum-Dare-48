@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,12 +16,9 @@ public class Enemy02Controller : MonoBehaviour
     private Rigidbody2D _playerRigidbody;
     private GameObject _gameObjectPlayerBody;
     private Collider2D _playerBodyCollider;
-    private PlayerMoveController _playerMoveController;
     private NavMeshAgent _navMeshAgent;
     
     [SerializeField] private Collider2D _attackTrigger;
-
-    private Rigidbody2D _rigidbody2D;
 
     private bool _isAttackStarted;
 
@@ -38,12 +32,12 @@ public class Enemy02Controller : MonoBehaviour
         
         _gameObjectPlayer = GameObject.Find("Player");
         _playerRigidbody = _gameObjectPlayer.GetComponent<Rigidbody2D>();
-        _playerMoveController = _gameObjectPlayer.GetComponent<PlayerMoveController>();
+        _gameObjectPlayer.GetComponent<PlayerMoveController>();
         
         _gameObjectPlayerBody = GameObject.Find("Player Body");
         _playerBodyCollider = _gameObjectPlayerBody.GetComponent<Collider2D>();
         
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        GetComponent<Rigidbody2D>();
         
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.updateRotation = false;

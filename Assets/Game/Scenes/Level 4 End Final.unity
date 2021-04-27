@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Items Between Levels
       objectReference: {fileID: 0}
+    - target: {fileID: 7929334102696858433, guid: 17689161d95cf407aabd3d4d9a07b7d9, type: 3}
+      propertyPath: _levelName
+      value: Level 5 Final
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17689161d95cf407aabd3d4d9a07b7d9, type: 3}
 --- !u!1 &568164510

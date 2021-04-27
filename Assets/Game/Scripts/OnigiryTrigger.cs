@@ -19,6 +19,12 @@ public class OnigiryTrigger : MonoBehaviour
     {
         if (_playerCollider == other)
         {
+            var gameObjectSoundEat = GameObject.Find("SoundEat");
+            if (gameObjectSoundEat != null)
+            {
+                gameObjectSoundEat.GetComponent<AudioSource>().Play();
+            }
+
             GameState.OnigiryEaten = true;
 
             GameState.CurrentHealth = _playerDamageController.MaxHealth;

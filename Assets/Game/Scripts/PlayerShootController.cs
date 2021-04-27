@@ -7,6 +7,7 @@ public class PlayerShootController : MonoBehaviour
     [SerializeField] private float _shootCooldown;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _fireballSpawnPoint;
+    [SerializeField] private AudioSource _audioSourceFireballShoot;
     
     private bool _isFirePressed = false;
 
@@ -35,6 +36,8 @@ public class PlayerShootController : MonoBehaviour
                 var fireballTargetLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 _animator.SetTrigger(_animationHashAttack);
+                
+                _audioSourceFireballShoot.Play();
                 
                 projectileController.LaunchTowards(fireballStartLocation, fireballTargetLocation);
 

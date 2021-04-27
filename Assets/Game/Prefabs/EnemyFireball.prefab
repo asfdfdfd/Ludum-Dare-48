@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2003479926178874502}
   - component: {fileID: 4544726661186081063}
   - component: {fileID: 4949037498248278415}
-  - component: {fileID: 4246770016176296083}
+  - component: {fileID: 1960362249180167126}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922948047822577106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 12.7551}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.321, z: 12.7551}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 8722407416172828947}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 08edfe73352be4f6691fd4971edaaefe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbee67665da514659910e0d98a465303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &4246770016176296083
+--- !u!58 &1960362249180167126
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,9 +152,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.39315772}
+  m_Offset: {x: -0.024332942, y: 0.85716635}
   serializedVersion: 2
-  m_Radius: 0.23101191
+  m_Radius: 0.3257589
 --- !u!1 &8722407416172828946
 GameObject:
   m_ObjectHideFlags: 0
